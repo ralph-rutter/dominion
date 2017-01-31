@@ -6,10 +6,15 @@ class Player {
 	private $hand = [];
 	private $inPlay = [];
 	private $discardPile = [];
+	private $actions;
+	private $buys;
+	private $treasure;
 
 	public function __construct($name) {
 		$this->name = $name;
-		$this->deck = [];
+		$this->actions = 1;
+		$this->buys = 1;
+		$this->treasure = 0;
 		for ($i = 0 ; $i < 7; $i++) {
 			$this->deck[] = new Copper;
 		}
@@ -33,5 +38,15 @@ class Player {
 
 	public function getName() {
 		return $this->name;
+	}
+
+	public function play($card) {
+		$cardIndex = array_search($card, $this->hand);
+		if ($cardIndex !== FALSE) {
+			$this->actions--;
+			$this->inPlay[] = $this->hand[$cardIndex];
+			unset($this->hand[$cardIndex]);
+			$card->play();
+		}
 	}
 }
