@@ -73,4 +73,8 @@ class Player {
 			'discardPile' => $this->discardPile,
 		];
 	}	
+
+	public function getName() {
+		return $this->name;
+	}
 }
