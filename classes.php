@@ -61,8 +61,16 @@ class Player {
 		}
 		shuffle($this->deck);
 		for ($i = 0; $i < 5; $i++) {
-
+			$this->hand[] = array_shift($this->deck);
 		}
-		var_dump($this->deck);
+	}
+
+	public function getCards() {
+		return [
+			'deck' => $this->deck,
+			'hand' => $this->hand,
+			'inPlay' => $this->inPlay,
+			'discardPile' => $this->discardPile,
+		];
 	}	
 }

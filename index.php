@@ -1,7 +1,11 @@
 <?php
 require 'classes.php';
+require 'functions.php';
 
-new Player('Ralph');
+$ralph = new Player('Ralph');
+
+seeCards($ralph->getCards(), 'deck');
+seeCards($ralph->getCards(), 'hand');
 
 echo "\n";
 
